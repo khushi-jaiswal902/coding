@@ -1,27 +1,117 @@
-import Image from "next/image";
-import Link from "next/link";
-import ComponentPage from "../_components/page";
+/*export default async function Blog1({params}) {
+    const {blogID} = await params;
+    return <div>Blog {blogID} </div>
+}*/
 
-export const metadata = {
-  title: 'Home'
+
+/*export async function generateMetadata({params}) {
+    const {blogID} = await params;
+return {
+    title: `Blog ${blogID}`,
 }
+}
+export default async function Blog1({params}) {
+    const {blogID} = await params;
+    return <div>Blog {blogID} </div>
+}
+//http://localhost:3000/blogs/378348
+*/
 
-export default async function Home({searchParams, params}) {
-  console.log(await searchParams);
-  console.log(await params);
+/*import { notFound } from "next/navigation";
+export async function generateMetadata({params}) {
+return {
+    title: `Blog ${blogID}`,
+}
+}
+export default async function Blog1({params}) {
+    const {blogID} = await params;
+    if(blogID === "test") {
+        notFound();
+    }
+    return <div>Blog {blogID} </div>
+}
+//http://localhost:3000/blogs/test
+*/
+import Link from "next/link";
+
+export const dynamicParams = false;
+
+// ISR
+// export const revalidate = 5;
+
+// SSG
+// export async function generateStaticParams() {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+//   const data = await response.json();
+//   console.log(data);
+//   return data.map(({ id }) => ({ blogID: `${id}` }));
+// }
+
+const Blog = async ({ params }) => {
+  const { blogID } = await params;
+  console.log("blogID: ", blogID);
   return (
     <>
-    <h1>Welcome to my home.</h1>
-    <ComponentPage />
-    <p>
-    <Link href='/about'>About</Link>
-    </p>
-    <p>
-    <Link href='/services'>service</Link>
-    </p>
-    <p>
-    <Link href='/files'>Files</Link>
-    </p>
+      <nav>
+        <ul className="navbar">
+          <li>
+            <Link href="/" className="nav-link">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" className="nav-link">
+              About
+            </Link>
+          </li>
+          <li>
+            <Link href="/services" className="nav-link">
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link href="/blogs" className="nav-link active">
+              Blogs
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <h1>Welcome to Our Blog {blogID}</h1>
+        <h2>Date: {new Date().toLocaleString()}</h2>
+        <p>This is blog {blogID} page.</p>
+      </div>
     </>
   );
+};
+
+//export default Blog;
+import { notFound } from "next/navigation";
+export async function generateMetadata({params}) {
+return {
+    title: `Blog ${blogID}`,
 }
+}
+export default async function Blog1({params}) {
+    const {blogID} = await params;
+    if(!/^\d+$/.test(blogID)) {
+        notFound();
+    }
+    return <div>Blog {blogID} </div>
+}
+//http://localhost:3000/blogs/abc
+
+
+/*import { notFound } from "next/navigation";
+export async function generateMetadata({params}) {
+return {
+    title: `Blog ${blogID}`,
+}
+}
+export default async function Blog1({params}) {
+    const {blogID} = await params;
+    if(!/^\d+$/.test(blogID)) {
+        notFound();
+    }
+    return <div>Blog {blogID} </div>
+}*/

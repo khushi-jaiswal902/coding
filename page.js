@@ -1,9 +1,6 @@
-export default async function Comment({params}) {
+export default async function Blog1({params}) {
     const paramsObj = await params;
-    const {blogID,commentID} = paramsObj;
+    const {blogID} = paramsObj;
     console.log(paramsObj);
-    return (
-    <div>Comment no <i>{commentID}</i> on <b>{blogID}</b> page</div>
-    )
+    return <div>All Comments on <b>{blogID}</b> page</div>
 }
-//http://localhost:3000/blogs/1/comments/10

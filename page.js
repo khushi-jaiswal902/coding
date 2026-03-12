@@ -1,16 +1,7 @@
-import Link from "next/link";
-
-export const metadata = {
-    title: 'about'
-}
-
-export default function About() {
+export default function WebDev () {
     return (
         <>
-        <h1>About Page</h1>
-        <Link href='/'>Home</Link>
+        <h1>SEO Services</h1>
         </>
     )
 }
-//localhost:3000/about
-

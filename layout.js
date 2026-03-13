@@ -1,11 +1,8 @@
-
-
-export default function RootLayout({children}) {
+export default function servicesLayout({children}) {
   return (
-    <>
-        <header style={{backgroundColor: "orange"}}>Header (Application)</header>
-        {children}
-        <footer style={{backgroundColor: "green"}}>Footer (Application)</footer>
-    </>
+    <div>
+      <h2>Services Layout</h2>
+      {children}
+    </div>
   )
 }

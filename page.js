@@ -1,7 +1,8 @@
-export default function WebDev () {
+
+export default function webDev () {
     return (
         <>
-        <h1>SEO Services</h1>
+        <h1>Web-dev</h1>
         </>
     )
 }
